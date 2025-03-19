@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ReadAndSearchClass {
+
+    private final String filePath = "src/main/resources/file.txt";
     List<Integer> list = new ArrayList<>();
 
-    public void readFile() {
-        File file = new File("src/main/resources/file.txt");
+    public int readFilePrintLongestSeq() {
+        File file = new File(filePath);
 
         try (Scanner sc = new Scanner(file)) {
             while (sc.hasNextInt()) {
@@ -17,25 +19,25 @@ public class ReadAndSearchClass {
         } catch (FileNotFoundException exception) {
             exception.printStackTrace();
         }
+        return searchLongestSequence(list);
     }
 
-    public int searchLongestSequence(List<Integer> list) {
+    private int searchLongestSequence(List<Integer> list) {
         int maxlength = 1;
         int currentLength = 1;
 
         for (int i = 1; i < list.size(); i++) {
-           if(list.get(i) > list.get(i - 1)){
-               currentLength++;
-           } else {
-               if(currentLength > maxlength){
-                   maxlength = currentLength;
-               }
-               currentLength = 1;
-           }
+            if (list.get(i) > list.get(i - 1)) {
+                currentLength++;
+            } else {
+                if (currentLength > maxlength) {
+                    maxlength = currentLength;
+                }
+                currentLength = 1;
+            }
 
         }
         return maxlength;
-
 
     }
 
