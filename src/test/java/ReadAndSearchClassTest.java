@@ -7,16 +7,14 @@ import org.junit.jupiter.api.Test;
 public class ReadAndSearchClassTest {
 
     ReadAndSearchClass readAndSearchClass = new ReadAndSearchClass();
+    String filePath = "src/main/resources/file.txt";
 
     @Test
-    void testReadFilePrintLongestSeqSuccess() {
+    void findLongestSequenceSuccess() {
 
-        readAndSearchClass.readFilePrintLongestSeq();
         List<Integer> expectedList = Arrays.asList(1, 2, 3, 2, 7, 11, 44, 100, 3, 8, 8, 6, 10, 3);
-        assertEquals(expectedList, readAndSearchClass.list);
-
         int expectedLength = 5;
-        assertEquals(expectedLength, readAndSearchClass.readFilePrintLongestSeq());
+        assertEquals(expectedLength, readAndSearchClass.findLongestSequence(filePath));
 
 
     }
