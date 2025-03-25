@@ -1,4 +1,4 @@
-package week0.initialtasks;
+package week0;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,6 @@
-public class Main {
+package interviewTasks;
+
+public class Fu {
 
     public static void main(String[] args) {
 
