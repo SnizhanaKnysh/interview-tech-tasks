@@ -9,15 +9,15 @@ import org.apache.logging.log4j.core.Logger;
 
 public class ReadAndSearchClass {
 
-    private final String filePath = "src/main/resources/file.txt";
-    private List<Integer> numbers = new ArrayList<>();
+
     private Logger logger;
 
     public int findLongestSequence(String filePath) {
         return findLongestSequence(readFile(filePath));
     }
 
-    private List<Integer> readFile(String filePath) {
+    public List<Integer> readFile(String filePath) {
+        List<Integer> numbers = new ArrayList<>();
         File file = new File(filePath);
 
         try (Scanner sc = new Scanner(file)) {
@@ -25,32 +25,12 @@ public class ReadAndSearchClass {
                 numbers.add(sc.nextInt());
             }
         } catch (IOException exception) {
-            logger.error(exception);
+            throw new RuntimeException(exception);
         }
         return numbers;
     }
 
     private int findLongestSequence(List<Integer> numbers) {
-        int maxlength = 1;
-        int currentLength = 1;
-
-        try {
-            for (int i = 1; i < numbers.size(); i++) {
-                if (numbers.get(i) > numbers.get(i - 1)) {
-                    currentLength++;
-                } else {
-                    if (currentLength > maxlength) {
-                        maxlength = currentLength;
-                    }
-                    currentLength = 1;
-                }
-            }
-        } catch (Exception exception) {
-            logger.error(exception);
-        }
-
-        return maxlength;
-
+        return 0;
     }
-
 }
