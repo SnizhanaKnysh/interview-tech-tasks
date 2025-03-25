@@ -1,4 +1,4 @@
-package week1.day2.shortestdistance;
+package week1.day2.highestMountain;
 
 import java.util.Scanner;
 
