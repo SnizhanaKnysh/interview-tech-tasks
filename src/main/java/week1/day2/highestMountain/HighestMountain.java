@@ -11,18 +11,23 @@ public class HighestMountain {
             int biggestH = 0;
             int highestIndex = 0;
 
-            for (int i = 0; i < 8; i++) {
+            int i = 0;
+
+            for (; ; ) {
+                if (i >= 8) {
+                    break;
+                }
+
                 int mountainH = in.nextInt();
 
                 if (mountainH > biggestH) {
                     biggestH = mountainH;
                     highestIndex = i;
                 }
+                i++;
             }
-
             System.out.println(highestIndex);
         }
+
     }
-
-
 }
