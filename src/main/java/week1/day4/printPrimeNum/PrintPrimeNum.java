@@ -7,9 +7,9 @@ import java.util.List;
 public class PrintPrimeNum {
 
     public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(94);
+        List<Integer> numbers = Arrays.asList(2,3,4,5,6,7,91,92,93);
 
-        for (int i = 0; i < numbers.size(); i++) {
+        for (int i = 0; i < numbers.size(); i++) { // extract into separate method  everything that is now inside for-loop
             int targetIndex;
 
             if (numbers.get(i) > 9) {
@@ -25,37 +25,39 @@ public class PrintPrimeNum {
                 targetIndex = numbers.get(i);
             }
 
-            boolean numFound = false;
+            boolean isNumberFound = false;
             int currentPrimeIndex = 1;
             int num = 2;
 
-            do {
+            do
+            {                                                //extract something into separate method to avoid over-nesting
                 if (currentPrimeIndex == targetIndex) {
                     System.out.print(num + " ");
-                    numFound = true;
+                    isNumberFound = true;
                 } else {
-                    num++;
+                    num += 1;
                     if (isPrime(num)) {
                         currentPrimeIndex++;
                     } else {
                         do {
-                            num++;
+                            num += 1;
                         } while (!isPrime(num));
                         currentPrimeIndex++;
                     }
                 }
-            } while (!numFound);
+            } while (!isNumberFound);
 
         }
     }
 
     static boolean isPrime(int number) {
-        if (number == 5 || number == 7) {
-            return true;
-        } else if ((number > 3 && (number % 2 == 0 || number % 3 == 0 || number % 5 == 0 || number % 7 == 0))) {
-            return false;
-        }
-        return true;
-    }
+            int counter = 0;
+            for (int i = 2; i <= number - 1; i++) {
+                if (number % i == 0) {
+                    counter++;
+                }
+            }
+            return counter == 0;
 
+    }
 }
