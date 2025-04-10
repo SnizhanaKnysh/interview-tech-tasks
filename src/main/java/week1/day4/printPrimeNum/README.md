@@ -9,16 +9,9 @@ The prime number with index 1 is 2.
    4. рахувати поточний індекс кожного знайденого простого числа
    5. вивести число, якщо воно пройде перевірку, чи воно просте + чи воно знаходиться на тому індексі, який ми шукаємо
 
-    
 
-------------------
-### steps to check if 9 is prime:
 
-1. divide by each following number starting from 2 until 8
-2. check if 9 could be divided by at least one number
-3. if yes - it is not prime
-
-### V2
+### 
 1009 - prime?
 
 1. divide by 2 (remember that we divided by 2, and it did not work -> [2])
@@ -67,6 +60,7 @@ The prime number with index 1 is 2.
 44. next number - 24 - can it be factorized into smaller factors? Yes 
 45. skip dividing by 24
 46. next number - 25 - can it be factorized into smaller factors? Yes 
+--- try dividing 25 by each number 2, 3, 5 ---
 47. skip dividing by 25
 48. next number - 26 - can it be factorized into smaller factors? Yes 
 49. skip dividing by 26
@@ -79,12 +73,52 @@ The prime number with index 1 is 2.
 56. next number - 30 - can it be factorized into smaller factors? Yes
 57. skip dividing by 30
 58. next number - 31 - can it be factorized into smaller factors? No
-59. divide by 31 (also remember that we divided by 31, and it did not work -> [2,3,5,7,11,13,17,19,23,29,31])
+59. divide by 31 (also remember that we divided by 31, and it did not work -> [2,3,5,7,11,13,17,19,23,29,31])_
+59. divide by 31 (also remember that we divided by 31, and it did not work -> [2,3,5,7,11,13,17,19,23,29,31,37,41])
 
-_________
-Щоб дізнатись до якого числа ділити - визначити корінь заданого числа (заокруглити в меншу сторону)
-корінь з 1009 ~31
+--------
+
+
+
+ create list PrimeNumbers[2...]
+
+                           1.   divide TARGET NUMBER by 2   
+                                          |
+                                   2.   divisible?
+                                       /      \
+                                    YES        NO
+                                    /            \
+     3.    targetNumber is NOT prime            4.  take the following number (after 2 in first iteration, afterwards +1) 
+                                                               |
+                                                       5.    divide taken number by numbers in the list of primeNumbers 
+                                                               |
+                                                 6.          divisible?
+                                                            /      \
+                                                          YES        NO
+                                                          /            \
+                                                   skip dividing        add that number to list of primeNumbers
+                                                        /                  \
+                                                 go to step 4               divide TARGET NUMBER by number just added to the list of prime numbers 
+                                                                              \
+                                                                              divisible?
+                                                                               /      \
+                                                                            YES        NO
+                                                                            /            \
+                                                       targetNumber is NOT prime          limit of divisors reached?
+                                                                                            /      \
+                                                                                          YES        NO
+                                                                                         /             \
+                                                                   TARGET NUMBER is PRIME            go to Step 4
+
+
+TARGET NUMBER - number that we are defining if it's prime
+divisors limit - square root of the TARGET NUMBER rounded down (e.g. for number 293 divisors limit is 17) 
+
+
+
+
+
 
 ## ALGORITHMS
 
-![algorithm](../../../../resources/images/week1/day3/temperatures.png)
+![algorithm](../../../../resources/images/week1/day3/.......png)
